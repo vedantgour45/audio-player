@@ -149,11 +149,11 @@ const Player = () => {
           ) : (
             <div className="flex flex-col justify-center items-center gap-5">
               <p className="text-gray-500 text-sm">Select something to play</p>
-              <img
+              {/* <img
                 className="w-16"
                 src="public/add-any-music.gif"
                 alt="image"
-              />
+              /> */}
             </div>
           )}
           {isLoading && (
