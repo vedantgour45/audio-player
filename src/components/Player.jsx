@@ -116,8 +116,8 @@ const Player = () => {
             </ul>
           ) : (
             <div>
-              <p className="text-gray-500 text-sm">
-                Add some tracks in Playlist.
+              <p className="text-gray-500 text-sm text-center">
+                Add some tracks in playlist
               </p>
             </div>
           )}
@@ -167,7 +167,7 @@ const Player = () => {
           ) : (
             <div className="flex flex-col justify-center items-center gap-5">
               <p className="text-gray-500 text-sm text-center">
-                Cereate yor playlist and select something to play
+                Select something to play
               </p>
               <img className="w-16" src={select} alt="image" />
             </div>
