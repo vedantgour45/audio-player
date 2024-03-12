@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import uniqid from "uniqid";
 import addMusic from "../../public/add-music.svg";
 import thumbnail from "../../public/thumbnail.svg";
+import select from "../../public/select.svg";
 import { SiYoutubemusic } from "react-icons/si";
 import { TiDeleteOutline } from "react-icons/ti";
 
@@ -165,12 +166,10 @@ const Player = () => {
             </div>
           ) : (
             <div className="flex flex-col justify-center items-center gap-5">
-              <p className="text-gray-500 text-sm">Cereate yor playlist and select something to play</p>
-              <img
-                className="w-16"
-                src="public/select.svg"
-                alt="image"
-              />
+              <p className="text-gray-500 text-sm text-center">
+                Cereate yor playlist and select something to play
+              </p>
+              <img className="w-16" src={select} alt="image" />
             </div>
           )}
           {isLoading && (
