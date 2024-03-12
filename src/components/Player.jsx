@@ -57,6 +57,7 @@ const Player = () => {
       (track) => track.id === currentTrack.id
     );
     if (currentIndex < playlist.length - 1) {
+      // If there are more tracks in the playlist
       const nextTrack = playlist[currentIndex + 1];
       setCurrentTrack(nextTrack);
       if (audioPlayerRef.current) {
@@ -68,7 +69,17 @@ const Player = () => {
         };
       }
     } else {
-      setCurrentTrack(null); // No more tracks to play
+      // If the current track is the last one in the playlist
+      const firstTrack = playlist[0];
+      setCurrentTrack(firstTrack);
+      if (audioPlayerRef.current) {
+        setIsLoading(true);
+        audioPlayerRef.current.src = firstTrack.file;
+        audioPlayerRef.current.onloadedmetadata = () => {
+          audioPlayerRef.current.play();
+          setIsLoading(false);
+        };
+      }
     }
   };
 
