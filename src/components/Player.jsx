@@ -76,7 +76,7 @@ const Player = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="w-full md:w-[60rem] mt-5 border border-[#c9c9c8] shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-opacity-20 backdrop-blur-sm rounded-xl grid md:grid-cols-2 ">
+      <div className="max-w-screen-md md:max-w-screen-xl border border-[#c9c9c8] shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-opacity-20 backdrop-blur-sm rounded-xl grid md:grid-cols-2 ">
         <div className="order-2 md:order-1 md:w-full flex flex-col pl-3 items-center border-t md:border-r md:border-t-0 border-[#c9c9c8] p-5">
           <h2 className="text-xl font-semibold mb-4">Playlist</h2>
           {playlist.length > 0 ? (
