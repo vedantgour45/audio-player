@@ -15,6 +15,8 @@ const Player = () => {
     return lastTrack;
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const audioPlayerRef = useRef(null);
 
   useEffect(() => {
@@ -144,7 +146,11 @@ const Player = () => {
           <h2 className="text-xl font-semibold">Now Playing</h2>
           {currentTrack ? (
             <div className="flex flex-col justify-center items-center mt-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-opacity-20 backdrop-blur-sm p-5 rounded-lg w-full">
-              <img src={thumbnail} alt="thumbnail" className={`w-[10rem]`} />
+              <img
+                src={thumbnail}
+                alt="thumbnail"
+                className={`w-[10rem] ${isPlaying ? "animate-spin" : ""}`}
+              />
               <p className="mt-4 text-center">{currentTrack.name}</p>
               <audio
                 className="my-4 w-full"
@@ -153,16 +159,18 @@ const Player = () => {
                 controls
                 autoPlay
                 onEnded={handleAudioEnded}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
               />
             </div>
           ) : (
             <div className="flex flex-col justify-center items-center gap-5">
-              <p className="text-gray-500 text-sm">Select something to play</p>
-              {/* <img
+              <p className="text-gray-500 text-sm">Cereate yor playlist and select something to play</p>
+              <img
                 className="w-16"
-                src="public/add-any-music.gif"
+                src="public/select.svg"
                 alt="image"
-              /> */}
+              />
             </div>
           )}
           {isLoading && (
