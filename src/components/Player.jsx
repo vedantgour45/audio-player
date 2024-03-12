@@ -80,7 +80,7 @@ const Player = () => {
         <div className="order-2 md:order-1 md:w-full flex flex-col pl-3 items-center border-t md:border-r md:border-t-0 border-[#c9c9c8] p-5">
           <h2 className="text-xl font-semibold mb-4">Playlist</h2>
           {playlist.length > 0 ? (
-            <ul className="mt-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-opacity-20 backdrop-blur-sm py-4 rounded-lg">
+            <ul className="w-full grow mt-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-opacity-20 backdrop-blur-sm py-4 rounded-lg">
               {playlist.map((track) => (
                 <li
                   key={track.id}
@@ -88,13 +88,24 @@ const Player = () => {
                   onClick={() => handleTrackSelect(track)}
                 >
                   <div className="flex items-center gap-3">
-                    <SiYoutubemusic />
-                    <span>{track.name}</span>
+                    <div className="grow-0">
+                      <SiYoutubemusic size={30} />
+                    </div>
+                    <div className="w-[50%] grow has-tooltip">
+                      <span class="tooltip rounded shadow-lg p-1 bg-[#05426b] text-[#dddbcb] mt-10 mr-5">
+                        {track.name}
+                      </span>
+                      <span className="whitespace-wrap">
+                        {track.name.length > 26
+                          ? `${track.name.slice(0, 26)}.....`
+                          : track.name}
+                      </span>
+                    </div>
                   </div>
                   <TiDeleteOutline
                     className="hover:animate-spin"
                     color="#c9c9c8"
-                    size={20}
+                    size={30}
                     onClick={() => handleDeleteTrack(track.id)}
                   />
                 </li>
@@ -132,19 +143,17 @@ const Player = () => {
         <div className="order-1 md:order-2 md:w-full p-5 flex flex-col pl-3 items-center gap-5">
           <h2 className="text-xl font-semibold">Now Playing</h2>
           {currentTrack ? (
-            <div>
-              <div className="flex flex-col justify-center items-center mt-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-opacity-20 backdrop-blur-sm p-5 rounded-lg">
-                <img src={thumbnail} alt="thumbnail" className={`w-[10rem]`} />
-                <p className="mt-4">{currentTrack.name}</p>
-                <audio
-                  className="my-4 w-full"
-                  ref={audioPlayerRef}
-                  src={currentTrack.file}
-                  controls
-                  autoPlay
-                  onEnded={handleAudioEnded}
-                />
-              </div>
+            <div className="flex flex-col justify-center items-center mt-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-opacity-20 backdrop-blur-sm p-5 rounded-lg w-full">
+              <img src={thumbnail} alt="thumbnail" className={`w-[10rem]`} />
+              <p className="mt-4 text-center">{currentTrack.name}</p>
+              <audio
+                className="my-4 w-full"
+                ref={audioPlayerRef}
+                src={currentTrack.file}
+                controls
+                autoPlay
+                onEnded={handleAudioEnded}
+              />
             </div>
           ) : (
             <div className="flex flex-col justify-center items-center gap-5">

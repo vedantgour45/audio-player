@@ -17,3 +17,25 @@ body {
 audio::-webkit-media-controls-panel {
   background-color: #f4f3ee;
 }
+
+.overflow-hidden {
+  animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
